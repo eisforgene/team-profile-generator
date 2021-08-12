@@ -22,7 +22,7 @@ test('checkingEmployeeNameFunction', function () {
 })
 test('checkingEmployeeIdFunction', function () {
     const myEmployee = new Employee("Eugene", 100, 'Eugene@gmail.com')
-    expect((myEmployee.getId())).toBe(100)
+    expect((myEmployee.getId())).toBe(100) // error here
 })
 test('checkingEmployeeEmailFunction', function () {
     const myEmployee = new Employee("Eugene", 100, 'Eugene@gmail.com')
