@@ -97,4 +97,34 @@ function addIntern() {
     })
 }
 
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'enter engineer name',
+            name: 'engname'
+        },
+        {
+            type: 'input',
+            message: 'enter engineer id',
+            name: 'engid'
+        },
+        {
+            type: 'input',
+            message: 'enter engineer email',
+            name: 'engemail'
+        },
+        {
+            type: 'input',
+            message: 'enter engineer github',
+            name: 'enggithub'
+        }
+    ])
+    .then(function(response){
+        const newEngineer = new Engineer('eugene', 1001, 'eugene@gmail.com', 'eisforgene')
+        console.log(newEngineer);
+        engineerList.push(newEngineer);
+    })
+}
+
 startMenu();
