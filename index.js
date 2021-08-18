@@ -2,11 +2,15 @@ const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
 
-const inquire = require('inquire');
+const inquire = require('inquirer');
 const fs = require('fs');
 const { exit } = require('process');
+const inquirer = require('inquirer');
+let managerList = [];
+let internList = [];
+let engineerList = [];
 
-function startmenu() {
+function startMenu() {
     inquire.prompt([
         {
             type: 'list',
@@ -33,3 +37,34 @@ function startmenu() {
     })
 }
 
+function addManager() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'enter employee name',
+            name: 'empname'
+        },
+        {
+            type: 'input',
+            message: 'enter employee id',
+            name: 'empid'
+        },
+        {
+            type: 'input',
+            message: 'enter employee email',
+            name: 'empemail'
+        },
+        {
+            type: 'input',
+            message: 'enter office number',
+            name: 'empoffice'
+        }
+    ])
+    .then(function(response){
+        const newManager = new Manager('eugene',898,'eugene@gmail.com',300)
+        console.log(newManager);
+        managerList.push(newManager);
+    })
+}
+
+startMenu();
