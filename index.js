@@ -67,4 +67,34 @@ function addManager() {
     })
 }
 
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'enter intern name',
+            name: 'intname'
+        },
+        {
+            type: 'input',
+            message: 'enter intern id',
+            name: 'intid'
+        },
+        {
+            type: 'input',
+            message: 'enter intern email',
+            name: 'intemail'
+        },
+        {
+            type: 'input',
+            message: 'enter intern school',
+            name: 'intschool'
+        }
+    ])
+    .then(function(response){
+        const newIntern = new Intern('eugene', 1001, 'eugene@gmail.com', 'ucla')
+        console.log(newIntern);
+        internList.push(newIntern);
+    })
+}
+
 startMenu();
