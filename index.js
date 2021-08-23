@@ -1,22 +1,29 @@
-const Engineer = require('./lib/Engineer')
-const Intern = require('./lib/Intern')
-const Manager = require('./lib/Manager')
+// DEPENDENCIES
+// ==================================
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
 
 const inquire = require('inquirer');
 const fs = require('fs');
 const { exit } = require('process');
 const inquirer = require('inquirer');
+
 let managerList = [];
 let internList = [];
 let engineerList = [];
+let employeeList = [];
 
+// FUNCTIONS
+// ==================================
 function startMenu() {
     inquire.prompt([
         {
             type: 'list',
-            name:"entry",
+            name: "entry",
             message: 'what would you like to do?',
-            choices: ['add manager', 'add intern', 'add engineer', 'exit application']
+            choices: ['add manager', 'add intern', 'add engineer', 'add employee', 'exit application']
         }
     ])
     .then(function(response){
@@ -29,6 +36,9 @@ function startMenu() {
                 break;
             case 'add engineer':
                 addEngineer();
+                break;
+            case 'add employee':
+                addEmployee();
                 break;
             case 'exit application':
                 exitApp();
@@ -125,6 +135,41 @@ function addEngineer() {
         console.log(newEngineer);
         engineerList.push(newEngineer);
     })
+}
+
+function addEmployee() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'enter employee name',
+            name: 'engname'
+        },
+        {
+            type: 'input',
+            message: 'enter employee id',
+            name: 'engid'
+        },
+        {
+            type: 'input',
+            message: 'enter employee email',
+            name: 'engemail'
+        },
+    ])
+    .then(function(response){
+        const newEmployee = new Employee('eugene', 1001, 'eugene@gmail.com', 'eisforgene')
+        console.log(newEmployee);
+        employeeList.push(newEmployee);
+    })
+};
+
+function createTeam() {
+    fs.writeFile('./dist/team.html', formattedHTML, err => {
+        if(err) {
+            return console.log(err);
+        } else {
+            console.log('Success!');
+        }
+    });
 }
 
 startMenu();
