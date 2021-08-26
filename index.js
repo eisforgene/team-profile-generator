@@ -124,7 +124,7 @@ function addEngineer() {
         },
         {
             type: 'input',
-            message: 'enter engineer github',
+            message: 'enter engineer github username',
             name: 'enggithub'
         }
     ])
